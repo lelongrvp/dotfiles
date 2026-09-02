@@ -1,0 +1,8 @@
+# Personal / sensitive - never track
+zsh/.zsh_history
+qBittorrent/
+iterm2/sockets/
+htop/
+
+# Reproducible plugin clones - re-fetched by _zplugin_load in zsh/plugins.zsh
+zsh/plugins/
