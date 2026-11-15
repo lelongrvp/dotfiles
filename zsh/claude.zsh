@@ -25,12 +25,30 @@ cc-fable() { claude --model fable "$@"; }
 cc-hard() { claude --model fable --effort max "$@"; }
 cc-lean() { command claude --strict-mcp-config "$@"; }
 
+_cc_route() {
+  local prompt="${(L)1}"
+  case "$prompt" in
+    *architecture*|*architect*|*"data model"*|*migration*|*refactor*|*"design the"*|*"plan the"*)
+      print -l -- --model opus --effort high --permission-mode plan ;;
+    *debug*|*"root cause"*|*concurren*|*"race condition"*|*security*|*permission*)
+      print -l -- --model opus --effort high ;;
+    *rename*|*format*|*lint*|*bump*|*upgrade*|*typo*|*"commit message"*|*"run tests"*|*"test run"*)
+      print -l -- --model sonnet --effort low ;;
+  esac
+}
+
 claude() {
   case "$1" in
     agents|attach|auth|auto-mode|doctor|gateway|import|install|logs|mcp|plugin|plugins|purge|respawn|rm|setup-token|stop|kill|ultrareview|--version|-v|--help|-h)
-      command claude "$@" ;;
-    *)
-      command claude --strict-mcp-config "$@" ;;
+      command claude "$@"
+      return ;;
   esac
+  local joined="$*"
+  local -a route
+  if [[ "$joined" != *--model* && "$joined" != *--effort* && "$joined" != *--permission-mode* ]]; then
+    route=("${(@f)$(_cc_route "$joined")}")
+    [[ -n "${route[1]:-}" ]] || route=()
+  fi
+  command claude --strict-mcp-config "${route[@]}" "$@"
 }
 claude-mcp() { command claude "$@"; }
