@@ -6,3 +6,5 @@ htop/
 
 # Reproducible plugin clones - re-fetched by _zplugin_load in zsh/plugins.zsh
 zsh/plugins/
+zsh/.zsh_sessions/
+music-get/env
