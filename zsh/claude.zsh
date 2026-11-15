@@ -23,3 +23,4 @@ alias cc-opus='claude --model opus'
 alias cc-plan='claude --permission-mode plan'
 cc-fable() { claude --model fable "$@"; }
 cc-hard() { claude --model fable --effort max "$@"; }
+cc-lean() { claude --strict-mcp-config "$@"; }
