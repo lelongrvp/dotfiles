@@ -33,14 +33,9 @@ key = "0"
 mods = "Super"
 action = "ResetFontSize"
 
-[[keyboard.bindings]]
-key = "U"
-mods = "Control|Shift"
-action = "Hint"
-
 [hints]
 enabled = [
-  { regex = "(mailto:|https://|http://|file:|ssh:|git://)[^ ]+" },
+  { regex = "(mailto:|https://|http://|file:|ssh:|git://)[^ ]+", action = "Copy", post_processing = true, binding = { key = "U", mods = "Control|Shift" }, mouse = { enabled = true } },
 ]
 
 [colors.primary]

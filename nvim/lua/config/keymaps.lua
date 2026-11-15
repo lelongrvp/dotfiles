@@ -22,4 +22,4 @@ end, { desc = "Close buffer or show dashboard" })
 vim.cmd([[cnoreabbrev <expr> q (getcmdtype() == ':' && getcmdline() == 'q') ? 'Q' : 'q']])
 
 vim.keymap.set("n", "<leader>lx", "<cmd>LazyExtras<cr>", { desc = "LazyExtras" })
-vim.keymap.set("n", "<leader>at", "<cmd>Minuet toggle<cr>", { desc = "Toggle AI completion" })
+

@@ -2,6 +2,15 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Make Mason-installed tools visible to health checks and external commands
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
+-- rplugin providers are unused; disabling them silences checkhealth and saves startup
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- LazyVim auto format
 vim.g.autoformat = true
 
@@ -21,10 +30,6 @@ vim.g.lazyvim_picker = "auto"
 -- enabled with `:LazyExtras`
 vim.g.lazyvim_cmp = "auto"
 
--- if the completion engine supports the AI source,
--- use that instead of inline suggestions
-vim.g.ai_cmp = true
-
 -- LazyVim root dir detection
 -- Each entry can be:
 -- * the name of a detector function like `lsp` or `cwd`
@@ -37,10 +42,6 @@ vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 -- * pwsh
 -- * powershell
 -- LazyVim.terminal.setup("pwsh")
-
--- Set LSP servers to be ignored when used with `util.root.detectors.lsp`
--- for detecting the LSP root
-vim.g.root_lsp_ignore = { "copilot" }
 
 -- Hide deprecation warnings
 vim.g.deprecation_warnings = false
@@ -102,6 +103,7 @@ opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
+opt.winborder = "rounded" -- Rounded borders on floating windows
 opt.statuscolumn = [[%!v:lua.LazyVim.statuscolumn()]]
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support

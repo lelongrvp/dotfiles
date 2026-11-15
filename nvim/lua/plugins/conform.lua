@@ -20,6 +20,8 @@ return {
       javascriptreact = { "prettier" },
       json = { "sort-locale-keys", "prettier" },
       jsonc = { "sort-locale-keys", "prettier" },
+      lua = { "stylua" },
+      sh = { "shfmt" },
       markdown = { "prettier" },
       mdx = { "prettier" },
       scss = { "prettier" },

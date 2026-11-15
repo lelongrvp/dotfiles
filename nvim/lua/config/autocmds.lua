@@ -193,3 +193,10 @@ vim.api.nvim_create_autocmd("DirChanged", {
     require("config.project").scan()
   end,
 })
+
+-- Snacks assigns vim.ui.select only when its picker initialises; do it at startup
+-- so LSP code actions use the Snacks picker from the first prompt.
+pcall(function()
+  require("snacks.picker").setup()
+end)
+

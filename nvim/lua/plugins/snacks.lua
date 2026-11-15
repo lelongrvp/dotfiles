@@ -90,6 +90,7 @@ return {
         width = 60
       },
       picker = {
+        ui_select = true,
         sources = {
           files = {
             hidden = true,
