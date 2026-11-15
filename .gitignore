@@ -28,3 +28,7 @@ homebrew/
 swiftpm/
 ponytail/
 music-get/env
+
+# Library databases and their migration backups, machine data rather than config
+beets/*.db
+beets/*.db-*
