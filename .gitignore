@@ -6,5 +6,25 @@ htop/
 
 # Reproducible plugin clones - re-fetched by _zplugin_load in zsh/plugins.zsh
 zsh/plugins/
+
+# Machine-only state
 zsh/.zsh_sessions/
+zsh/.zshrc.bak*
+.DS_Store
+iterm2/AppSupport
+
+# Credential-bearing tool state. gh/hosts.yml holds an OAuth token and
+# rclone/rclone.conf holds B2 keys, so none of these belong in a public repo.
+gh/
+gh-morrow/
+rclone/
+b2/
+cursor/
+zed/
+opencode/
+raycast/
+lazygit/
+homebrew/
+swiftpm/
+ponytail/
 music-get/env

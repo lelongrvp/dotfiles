@@ -34,6 +34,19 @@ setopt NOBEEP
 setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
 # =========================================================
+# PATH
+# =========================================================
+
+# /etc/zprofile runs path_helper *after* .zshenv, which rebuilds PATH with
+# /etc/paths entries (/usr/local/bin, /usr/bin, ...) ahead of everything from
+# /etc/paths.d — including /opt/homebrew/bin. Re-assert Homebrew here so its
+# git/python3/ruby/openssl win over the system copies. `typeset -U path`
+# (set in .zshenv) drops the demoted duplicate.
+typeset -U path PATH
+path=("$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin" $path)
+export PATH
+
+# =========================================================
 # Smart directory navigation & lf
 # =========================================================
 
@@ -143,3 +156,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+eval "$(/opt/homebrew/bin/direnv hook zsh)"
