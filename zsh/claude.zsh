@@ -49,6 +49,5 @@ claude() {
     route=("${(@f)$(_cc_route "$joined")}")
     [[ -n "${route[1]:-}" ]] || route=()
   fi
-  command claude --strict-mcp-config "${route[@]}" "$@"
+  command claude "${route[@]}" "$@"
 }
-claude-mcp() { command claude "$@"; }
