@@ -15,3 +15,9 @@ fi
 
 # Machine-local secrets (AZURE_DEVOPS_PAT, optional ANTHROPIC_API_KEY)
 [[ -f "$HOME/.claude/secrets.env" ]] && source "$HOME/.claude/secrets.env"
+
+# Model and plan-mode shortcuts. cc-plan relies on opusplan: plan mode is Opus,
+# leaving plan mode drops to Sonnet.
+alias cc-sonnet='claude --model sonnet'
+alias cc-opus='claude --model opus'
+alias cc-plan='claude --permission-mode plan'
