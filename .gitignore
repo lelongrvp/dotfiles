@@ -32,3 +32,6 @@ music-get/env
 # Library databases and their migration backups, machine data rather than config
 beets/*.db
 beets/*.db-*
+
+# Symlink into the soulpress project, meaningless outside this machine
+beets/config.yaml
